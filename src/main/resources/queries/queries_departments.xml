@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<sql-queries>
+	<sql-query>
+		<query-name>DEPARTMENT.GET_ALL_DEPARTMENTS</query-name>
+		<query>
+			<![CDATA[select * from department]]>
+		</query>
+	</sql-query>
+
+</sql-queries>
