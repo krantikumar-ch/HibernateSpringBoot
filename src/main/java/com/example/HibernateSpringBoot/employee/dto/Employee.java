@@ -33,12 +33,10 @@ public class Employee  implements Serializable{
 	@Column
 	private Float salary;
 	
-	@Column(name="department_id", insertable=false, updatable=false)
+	@Column(name="department_id")
 	private Long departmentId;
 	
-	@ManyToOne(fetch=FetchType.EAGER )
-	@JoinColumn(name="department_id")
-	private Department department;
+	
 	
 	@Override
 	public String toString(){
@@ -46,14 +44,6 @@ public class Employee  implements Serializable{
 				+ "Last name "+lastName+" email "+email+" salary "+salary+" department  id "+departmentId;
 	}
 	
-	public Department getDepartment() {
-		return department;
-	}
-
-	public void setDepartment(Department department) {
-		this.department = department;
-	}
-
 	public Long getEmployeeId() {
 		return employeeId;
 	}

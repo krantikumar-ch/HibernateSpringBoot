@@ -1,5 +1,6 @@
 package com.example.HibernateSpringBoot.employee.dto;
 
+import java.io.Serializable;
 import java.util.Set;
 
 import javax.persistence.Column;
@@ -14,7 +15,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name="department")
-public class Department {
+public class Department implements Serializable{
 	
 	@Id @Column(name="department_id")
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
