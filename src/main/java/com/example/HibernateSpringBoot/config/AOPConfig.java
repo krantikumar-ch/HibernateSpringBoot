@@ -4,6 +4,8 @@ import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.reflect.MethodSignature;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.util.StopWatch;
 
@@ -12,6 +14,7 @@ import org.springframework.util.StopWatch;
 @Component
 public class AOPConfig {
 
+	private static final Logger logger = LoggerFactory.getLogger(AOPConfig.class);
 	
 	@Around("execution(* com.example.HibernateSpringBoot.*.controller.*.*(..)) ||"
 			+ "execution(* com.example.HibernateSpringBoot.*.daoimpl.*.*(..)) ||"
@@ -27,7 +30,7 @@ public class AOPConfig {
         stopWatch.start();
         Object result = proceedingJoinPoint.proceed();
         stopWatch.stop();
-		System.out.println("--- IN AOP --- "+className+" class "+methodName+" method total execution time "+stopWatch.getTotalTimeMillis()+" ms");
+        logger.info("-- IN AOP -- {} class {} method total execution time {} ms",className, methodName, stopWatch.getTotalTimeMillis());
 		return result;
 	}
 }
