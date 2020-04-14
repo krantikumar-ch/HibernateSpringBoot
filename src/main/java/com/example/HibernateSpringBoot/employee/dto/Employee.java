@@ -4,9 +4,12 @@ import java.io.Serializable;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
@@ -30,11 +33,26 @@ public class Employee  implements Serializable{
 	@Column
 	private Float salary;
 	
-	@Column(name="department_id")
+	@Column(name="department_id", insertable=false, updatable=false)
 	private Long departmentId;
 	
-	@Column(name="department_name", insertable=false, updatable=false)
-	private String departmentName;
+	@ManyToOne(fetch=FetchType.EAGER )
+	@JoinColumn(name="department_id")
+	private Department department;
+	
+	@Override
+	public String toString(){
+		return " department: "+" employeeId "+employeeId+" first name "+firstName+" "
+				+ "Last name "+lastName+" email "+email+" salary "+salary+" department  id "+departmentId;
+	}
+	
+	public Department getDepartment() {
+		return department;
+	}
+
+	public void setDepartment(Department department) {
+		this.department = department;
+	}
 
 	public Long getEmployeeId() {
 		return employeeId;

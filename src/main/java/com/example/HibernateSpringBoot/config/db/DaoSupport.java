@@ -15,7 +15,8 @@ import org.springframework.orm.hibernate5.support.HibernateDaoSupport;
 public abstract class DaoSupport extends HibernateDaoSupport{
 	
 	@Autowired    
-  	public final void setSessionFacotry(SessionFactory sessionFacotry) {   
+  	public final void setSessionFacotry(SessionFactory sessionFacotry) {
+		System.out.println("sessionfactory class "+sessionFacotry.getClass().getName());
        super.setSessionFactory(sessionFacotry);   
   	}  
 

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 
 import com.example.HibernateSpringBoot.config.db.DaoSupport;
 import com.example.HibernateSpringBoot.employee.dao.EmployeeDao;
+import com.example.HibernateSpringBoot.employee.dto.Department;
 import com.example.HibernateSpringBoot.employee.dto.Employee;
 import com.example.HibernateSpringBoot.employee.dto.EmployeeDTO;
 import com.example.HibernateSpringBoot.utils.SQLQueryUtils;
@@ -49,6 +50,16 @@ public class EmployeeDaoImpl extends DaoSupport implements EmployeeDao {
 			return nQuery.getResultList();
 		});
 		
+	}
+
+	@Override
+	public Employee getEmploye(Long empId) {
+		return getHibernateTemplate().get(Employee.class, empId);
+	}
+
+	@Override
+	public Department getDepartment(Long deptId) {
+		return getHibernateTemplate().get(Department.class, deptId);
 	}
 	
 	
